@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 13, 2017 at 07:48 
+-- Generation Time: May 13, 2017 at 01:23 
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -113,6 +113,29 @@ CREATE TABLE `rhl` (
   `year` year(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id_user` int(10) UNSIGNED NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `rule` enum('admin','manager') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id_user`, `email`, `password`, `rule`) VALUES
+(1, 'faqiharifianaji@gmail.com', '$2y$10$fnN.QrTa83pPsVPrFUrZheus0ZWntou6/w/s9kizWHz7SO3KkQVvq', 'admin'),
+(4, 'faqvhack@gmail.com', '$2y$10$AIhNWxiFwKPV4mD5Dkh.lOBpaeQfJ3dLgOsvjsf9ZZs9dvnsuUE/W', 'manager'),
+(5, 'adik@admin.com', '$2y$10$G/I/RX7OPDTEDdT3DW.af.vfiAERd91IvCqsDzsNPEPf9l34R8.rq', 'admin'),
+(6, 'adik@manager.com', '$2y$10$G/I/RX7OPDTEDdT3DW.af.vfiAERd91IvCqsDzsNPEPf9l34R8.rq', 'manager');
+
 --
 -- Indexes for dumped tables
 --
@@ -144,6 +167,13 @@ ALTER TABLE `rhl`
   ADD KEY `id_city` (`id_city`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id_user`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -167,6 +197,11 @@ ALTER TABLE `obit`
 --
 ALTER TABLE `rhl`
   MODIFY `id_rhl` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id_user` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
