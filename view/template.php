@@ -77,9 +77,9 @@
         <section class="sidebar">
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
-                <li><a href="<?php echo ROOT.'/'.$user['rule'];?>/kbr"><i class="fa fa-circle-o text-red"></i> <span>KBR</span></a></li>
-                <li><a href="<?php echo ROOT.'/'.$user['rule'];?>/rhl"><i class="fa fa-circle-o text-yellow"></i> <span>RHL</span></a></li>
-                <li><a href="<?php echo ROOT.'/'.$user['rule'];?>/obit"><i class="fa fa-circle-o text-aqua"></i> <span>OBIT</span></a></li>
+                <li<?php echo ($page == "kbr" ? " class=active" : ""); ?>><a href="<?php echo ROOT.'/'.$user['rule'];?>/kbr"><i class="fa fa-circle-o text-red"></i> <span>KBR</span></a></li>
+                <li<?php echo ($page == "rhl" ? " class=active" : ""); ?>><a href="<?php echo ROOT.'/'.$user['rule'];?>/rhl"><i class="fa fa-circle-o text-yellow"></i> <span>RHL</span></a></li>
+                <li<?php echo ($page == "obit" ? " class=active" : ""); ?>><a href="<?php echo ROOT.'/'.$user['rule'];?>/obit"><i class="fa fa-circle-o text-aqua"></i> <span>OBIT</span></a></li>
             </ul>
         </section>
         <!-- /.sidebar -->
@@ -152,6 +152,36 @@
             autoclose: true
         }
     );
+    $('.btn-edit').on('click', function(){
+        var parent = $(this).parent().parent();
+        var views = $(parent).find('.view');
+        var edits = $(parent).find('.edit');
+        $.each(views, function(key, value){
+            $(value).addClass('hidden');
+        });
+        $.each(edits, function(key, value){
+            $(value).removeClass('hidden');
+        });
+    });
+    $('.btn-edit-cancel').on('click', function(){
+        var parent = $(this).parent().parent();
+        var views = $(parent).find('.view');
+        var edits = $(parent).find('.edit');
+        $.each(views, function(key, value){
+            $(value).removeClass('hidden');
+        });
+        $.each(edits, function(key, value){
+            $(value).addClass('hidden');
+        });
+    });
+    $('.btn-update').on('click', function(){
+        var parent = $(this).parent().parent().parent();
+        var edits = $(parent).find('input');
+        $.each(edits, function(key, value){
+            var name = $(value).attr('name');
+            $(parent).find('input[type=hidden][name='+name+']').val($(value).val());
+        });
+    });
 
     var ctx1 = document.getElementById("myChart1");
     var myChart1 = new Chart(ctx1, {
