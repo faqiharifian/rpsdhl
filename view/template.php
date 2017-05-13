@@ -24,6 +24,9 @@
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="<?php echo ROOT; ?>/assets/dist/css/skins/_all-skins.min.css">
 
+    <!-- Theme style -->
+    <link rel="stylesheet" href="<?php echo ROOT; ?>/assets/plugins/datepicker/datepicker3.css">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -134,13 +137,16 @@
 <script src="<?php echo ROOT; ?>/assets/dist/js/pages/dashboard2.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo ROOT; ?>/assets/dist/js/demo.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="<?php echo ROOT; ?>/assets/plugins/datepicker/bootstrap-datepicker.js"></script>
 </body>
 <script type="text/javascript">
     $(".tahun_kbr").datepicker(
         {
             format: "yyyy",
             viewMode: "years",
-            minViewMode: "years"
+            minViewMode: "years",
+            autoclose: true
         }
     );
 </script>
