@@ -67,6 +67,7 @@
                     <th>Action</th>
                 </tr>
                     <?php
+                    if(!empty($data_kbr)){
                         $no = 1;
                         foreach ($data_kbr as $item_kbr){
                             echo"<tr><td>$no</td><td>".$item_kbr['name']."</td><td>".$item_kbr['year']."</td><td>".$item_kbr['unit']."</td><td>".$item_kbr['large']."</td>
@@ -79,6 +80,10 @@
                             </tr>";
                             $no++;
                         }
+                    }else{
+                        echo "<tr><td align='center' colspan='6'>Tidak ada data</td></tr>";
+                    }
+
                     ?>
             </table>
         </div>
