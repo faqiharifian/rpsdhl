@@ -3,6 +3,7 @@
         Penanaman Satu Milyar Pohon (OBIT)
     </h1>
     <?php
+    $id_error = -1;
     if (session_status() == PHP_SESSION_NONE)
         session_start();
     if(isset($_SESSION['success_store_obit'])){
@@ -11,6 +12,16 @@
     }else if(isset($_SESSION['error_store_obit'])){
         echo'<div class="alert alert-danger" role="alert">'.$_SESSION['error_store_obit'].'</div>';
         unset($_SESSION['error_store_obit']);
+    }else if(isset($_SESSION['success_update_obit'])){
+        echo'<div class="alert alert-success" role="alert">'.$_SESSION['success_update_obit'].'</div>';
+        unset($_SESSION['success_update_obit']);
+    }else if(isset($_SESSION['error_update_obit'])){
+        echo'<div class="alert alert-danger" role="alert">'.$_SESSION['error_update_obit'].'</div>';
+        unset($_SESSION['error_update_obit']);
+        if(isset($_SESSION['error_update_obit_id'])){
+            $id_error = $_SESSION['error_update_obit_id'];
+            unset($_SESSION['error_update_obit_id']);
+        }
     }else if(isset($_SESSION['success_delete_obit'])){
         echo'<div class="alert alert-success" role="alert">'.$_SESSION['success_delete_obit'].'</div>';
         unset($_SESSION['success_delete_obit']);
@@ -60,14 +71,39 @@
                     <?php foreach($data_obit as $key => $obit): ?>
                     <tr>
                         <td><?php echo $key+1; ?></td>
-                        <td><?php echo $obit['name']; ?></td>
-                        <td><?php echo $obit['year']; ?></td>
-                        <td><?php echo $obit['count']; ?></td>
                         <td>
-                            <form method="post" action="<?php echo ROOT; ?>/admin/obit/delete.php">
+                            <span class="view <?php echo ($id_error == $obit['id_obit'] ? "hidden" : "") ?>"><?php echo $obit['name']; ?></span>
+                            <span class="edit <?php echo ($id_error == $obit['id_obit'] ? "" : "hidden") ?>">
+                                <input type="text"  class="form-control" name="name" placeholder="Nama Kegiatan" value="<?php echo $obit['name']; ?>" required>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="view <?php echo ($id_error == $obit['id_obit'] ? "hidden" : "") ?>"><?php echo $obit['year']; ?></span>
+                            <span class="edit <?php echo ($id_error == $obit['id_obit'] ? "" : "hidden") ?>">
+                                <input type="text"  class="tahun_kbr form-control" name="year" placeholder="Tahun" value="<?php echo $obit['year']; ?>" required>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="view <?php echo ($id_error == $obit['id_obit'] ? "hidden" : "") ?>"><?php echo $obit['count']; ?></span>
+                            <span class="edit <?php echo ($id_error == $obit['id_obit'] ? "" : "hidden") ?>">
+                                <input type="number" class="form-control" name="count" placeholder="Jumlah Pohon (Btg)" value="<?php echo $obit['count']; ?>" required>
+                            </span>
+                        </td>
+                        <td>
+                            <button type='button' class='btn btn-primary btn-edit view <?php echo ($id_error == $obit['id_obit'] ? "hidden" : "") ?>'>Ubah</button>
+                            <form id="form-delete-<?php echo $obit['id_obit']; ?>" method="post" action="<?php echo ROOT; ?>/admin/obit/delete.php" style="display: inline-block;">
                                 <input type="hidden" value="<?php echo $obit['id_obit']; ?>" name="id_obit"/>
-                                <button Onclick='return ConfirmDelete();' type='submit' value='SUBMIT' name='SUBMIT' class='btn btn-danger'>Hapus</button>
+                                <button Onclick='return ConfirmDelete();' type='submit' value='SUBMIT' name='SUBMIT' class='btn btn-danger view <?php echo ($id_error == $obit['id_obit'] ? "hidden" : "") ?>'>Hapus</button>
                             </form>
+                            <input type="hidden" name="name"/>
+                            <form id="form-update-<?php echo $obit['id_obit']; ?>" method="post" action="<?php echo ROOT; ?>/admin/obit/update.php" style="display: inline-block;">
+                                <input type="hidden" value="<?php echo $obit['id_obit']; ?>" name="id_obit"/>
+                                <input type="hidden" name="name"/>
+                                <input type="hidden" name="year"/>
+                                <input type="hidden" name="count"/>
+                                <button type='submit' value='SUBMIT' name='SUBMIT' class='btn btn-info btn-update edit <?php echo ($id_error == $obit['id_obit'] ? "" : "hidden") ?>'>Simpan</button>
+                            </form>
+                            <button type='button' class='btn btn-warning btn-edit-cancel edit <?php echo ($id_error == $obit['id_obit'] ? "" : "hidden") ?>'>Batal</button>
                         </td>
                     </tr>
                     <?php endforeach; ?>
@@ -85,4 +121,7 @@
         else
             return false;
     }
+    $(function(){
+        $('.view').removeClass("view");
+    });
 </script>

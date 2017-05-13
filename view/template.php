@@ -152,5 +152,35 @@
             autoclose: true
         }
     );
+    $('.btn-edit').on('click', function(){
+        var parent = $(this).parent().parent();
+        var views = $(parent).find('.view');
+        var edits = $(parent).find('.edit');
+        $.each(views, function(key, value){
+            $(value).addClass('hidden');
+        });
+        $.each(edits, function(key, value){
+            $(value).removeClass('hidden');
+        });
+    });
+    $('.btn-edit-cancel').on('click', function(){
+        var parent = $(this).parent().parent();
+        var views = $(parent).find('.view');
+        var edits = $(parent).find('.edit');
+        $.each(views, function(key, value){
+            $(value).removeClass('hidden');
+        });
+        $.each(edits, function(key, value){
+            $(value).addClass('hidden');
+        });
+    });
+    $('.btn-update').on('click', function(){
+        var parent = $(this).parent().parent().parent();
+        var edits = $(parent).find('input');
+        $.each(edits, function(key, value){
+            var name = $(value).attr('name');
+            $(parent).find('input[type=hidden][name='+name+']').val($(value).val());
+        });
+    });
 </script>
 </html>

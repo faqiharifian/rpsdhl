@@ -40,6 +40,33 @@ function store_obit(){
     }
 }
 
+function update_obit(){
+    if (session_status() == PHP_SESSION_NONE)
+        session_start();
+    if((empty($_POST['id_obit']))||(empty($_POST['name']))||(empty($_POST['year']))||(empty($_POST['count']))){
+        $_SESSION['error_update_obit'] = "Harap lengkapi isian formulir.";
+        if(!empty($_POST['id_obit']))
+            $_SESSION['error_update_obit_id'] = $_POST['id_obit'];
+        return false;
+    }else{
+        require_once "db_connection.php";
+        $conn = mysqli_connect($hostname,  $username, $password, $dbname);
+
+        if (!$conn)
+            die("Connection failed: " . mysqli_connect_error());
+        $id_obit = $_POST['id_obit'];
+        $name = mysqli_real_escape_string($conn, $_POST['name']);
+        $count = $_POST['count'];
+        $year = $_POST['year'];
+        $query = mysqli_query($conn, "UPDATE obit SET name = '$name', year = $year, count = $count WHERE id_obit = $id_obit;");
+        if(!$query)
+            die("Query failed: " . mysqli_error($conn));
+
+        $_SESSION['success_update_obit'] = "Berhasil memperbarui data.";
+        return true;
+    }
+}
+
 function delete_obit(){
     if (session_status() == PHP_SESSION_NONE)
         session_start();
