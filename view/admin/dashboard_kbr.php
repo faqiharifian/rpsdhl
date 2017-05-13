@@ -131,7 +131,7 @@
                         <?php endforeach; ?>
                     <?php else :?>
                         <tr>
-                            <td align='center' colspan='6'>Tidak ada data</td>
+                            <td align='center' colspan='6'>Data KBR tidak ditemukan</td>
                         </tr>
                     <?php endif; ?>
             </table>
