@@ -79,7 +79,7 @@
             <ul class="sidebar-menu">
                 <li><a href="<?php echo ROOT.'/'.$user['rule'];?>/kbr"><i class="fa fa-circle-o text-red"></i> <span>KBR</span></a></li>
                 <li><a href="<?php echo ROOT.'/'.$user['rule'];?>/rhl"><i class="fa fa-circle-o text-yellow"></i> <span>RHL</span></a></li>
-                <li><a href=<?php echo ROOT.'/'.$user['rule'];?>/obit"><i class="fa fa-circle-o text-aqua"></i> <span>OBIT</span></a></li>
+                <li><a href="<?php echo ROOT.'/'.$user['rule'];?>/obit"><i class="fa fa-circle-o text-aqua"></i> <span>OBIT</span></a></li>
             </ul>
         </section>
         <!-- /.sidebar -->
