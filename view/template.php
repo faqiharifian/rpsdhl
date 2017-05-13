@@ -276,7 +276,7 @@
                 include(ROOTPATH."/view/".$user['rule']."/welcome.php");
                 break;
             case "kbr":
-                include(ROOTPATH."/view/".$user['rule']."/dashboard_kbr.php");
+                include(ROOTPATH."\\view\\".$user['rule']."\\dashboard_kbr.php");
                 break;
             case "obit":
                 include(ROOTPATH."/view/".$user['rule']."/dashboard_obit.php");
