@@ -177,10 +177,15 @@
     $('.btn-update').on('click', function(){
         var parent = $(this).parent().parent().parent();
         var edits = $(parent).find('input');
+        var selects = $(parent).find('select');
         $.each(edits, function(key, value){
             var name = $(value).attr('name');
             $(parent).find('input[type=hidden][name='+name+']').val($(value).val());
         });
+        $.each(selects, function(key, value){
+            var name = $(value).attr('name');
+            $(parent).find('input[type=hidden][name='+name+']').val($(value).val());
+        })
     });
 
     var ctx1 = document.getElementById("myChart1");

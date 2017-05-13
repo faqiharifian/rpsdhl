@@ -121,7 +121,4 @@
         else
             return false;
     }
-    $(function(){
-        $('.view').removeClass("view");
-    });
 </script>

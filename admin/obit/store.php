@@ -8,5 +8,4 @@ if(!isset($_POST['SUBMIT'])){
 }else{
     store_obit();
     header("Location: index.php");
-
 }
