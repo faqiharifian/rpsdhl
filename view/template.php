@@ -737,4 +737,13 @@
 <!-- AdminLTE for demo purposes -->
 <script src="/assets/dist/js/demo.js"></script>
 </body>
+<script type="text/javascript">
+    $(".tahun_kbr").datepicker(
+        {
+            format: "yyyy",
+            viewMode: "years",
+            minViewMode: "years"
+        }
+    );
+</script>
 </html>
