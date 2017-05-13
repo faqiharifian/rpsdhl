@@ -12,6 +12,12 @@
     }else if(isset($_SESSION['error_store_kbr'])){
         echo'<div class="alert alert-danger" role="alert">'.$_SESSION['error_store_kbr'].'</div>';
         unset($_SESSION['error_store_kbr']);
+    }else if(isset($_SESSION['success_delete_kbr'])){
+        echo'<div class="alert alert-success" role="alert">'.$_SESSION['success_delete_kbr'].'</div>';
+        unset($_SESSION['success_delete_kbr']);
+    }else if(isset($_SESSION['error_delete_kbr'])){
+        echo'<div class="alert alert-danger" role="alert">'.$_SESSION['error_delete_kbr'].'</div>';
+        unset($_SESSION['error_delete_kbr']);
     }
     ?>
 
@@ -51,7 +57,7 @@
             <h5>Tabel</h5>
         </div>
         <div class="panel-body">
-            <table class="table">
+            <table class="table" id="table_kbr">
                 <tr>
                     <th>No</th>
                     <th>Kabupaten</th>
@@ -63,7 +69,14 @@
                     <?php
                         $no = 1;
                         foreach ($data_kbr as $item_kbr){
-                            echo"<tr><td>$no</td><td>".$item_kbr['name']."</td><td>".$item_kbr['year']."</td><td>".$item_kbr['unit']."</td><td>".$item_kbr['large']."</td><td></td></tr>";
+                            echo"<tr><td>$no</td><td>".$item_kbr['name']."</td><td>".$item_kbr['year']."</td><td>".$item_kbr['unit']."</td><td>".$item_kbr['large']."</td>
+                            <td>
+                                <form method='post' action='".ROOT."/admin/kbr/delete.php'>
+                                    <input type='hidden' value='".$item_kbr['id_kbr']."' name='id_kbr'/>
+                                    <button Onclick='return ConfirmDelete();' type='submit' value='SUBMIT' name='SUBMIT' class='btn btn-danger'>Hapus</button>
+                                </form>                              
+                            </td>
+                            </tr>";
                             $no++;
                         }
                     ?>
@@ -71,4 +84,14 @@
         </div>
     </div>
 </section>
+<script>
+    function ConfirmDelete()
+    {
+        var x = confirm("Anda yakin akan menghapus data ini?");
+        if (x)
+            return true;
+        else
+            return false;
+    }
+</script>
 

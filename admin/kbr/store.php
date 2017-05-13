@@ -7,7 +7,7 @@ if(!isset($_POST['SUBMIT'])){
     header("Location: index.php");
 }else{
 
-    store();
+    store_kbr();
     header("Location: index.php");
 
 }

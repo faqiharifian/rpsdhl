@@ -27,6 +27,7 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="<?php echo ROOT; ?>/assets/plugins/datepicker/datepicker3.css">
 
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -137,8 +138,10 @@
 <script src="<?php echo ROOT; ?>/assets/dist/js/pages/dashboard2.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo ROOT; ?>/assets/dist/js/demo.js"></script>
-<!-- Bootstrap 3.3.6 -->
+<!-- Bootstrap datepicker -->
 <script src="<?php echo ROOT; ?>/assets/plugins/datepicker/bootstrap-datepicker.js"></script>
+<!-- Bootstrap datatables -->
+<script src="<?php echo ROOT; ?>/assets/plugins/datatables/dataTables.bootstrap.min.js"></script>
 </body>
 <script type="text/javascript">
     $(".tahun_kbr").datepicker(
