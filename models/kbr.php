@@ -40,6 +40,34 @@ function store_kbr(){
     }
 }
 
+function update_kbr(){
+    if (session_status() == PHP_SESSION_NONE)
+        session_start();
+    if((empty($_POST['id_kbr']))||(empty($_POST['city']))||(empty($_POST['year']))||(empty($_POST['unit'])) ||(empty($_POST['large']))){
+        $_SESSION['error_update_kbr'] = "Harap lengkapi isian formulir.";
+        if(!empty($_POST['id_kbr']))
+            $_SESSION['error_update_kbr_id'] = $_POST['id_kbr'];
+        return false;
+    }else{
+        require_once "db_connection.php";
+        $conn = mysqli_connect($hostname,  $username, $password, $dbname);
+
+        if (!$conn)
+            die("Connection failed: " . mysqli_connect_error());
+        $id_kbr = $_POST['id_kbr'];
+        $city = $_POST['city'];
+        $unit = $_POST['unit'];
+        $large = $_POST['large'];
+        $year = $_POST['year'];
+        $query = mysqli_query($conn, "UPDATE kbr SET  year = $year,id_city = $city , unit = $unit, large = $large WHERE id_kbr=$id_kbr;");
+        if(!$query)
+            die("Query failed: " . mysqli_error($conn));
+
+        $_SESSION['success_update_kbr'] = "Berhasil memperbarui data.";
+        return true;
+    }
+}
+
 function delete_kbr(){
     if (session_status() == PHP_SESSION_NONE)
         session_start();
