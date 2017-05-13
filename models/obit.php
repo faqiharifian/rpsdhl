@@ -1,6 +1,6 @@
 <?php
 
-function get(){
+function get_obit(){
     require_once "db_connection.php";
     $conn = mysqli_connect($hostname,  $username, $password, $dbname);
 
