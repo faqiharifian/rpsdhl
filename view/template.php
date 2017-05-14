@@ -7,7 +7,11 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Dashboard</title>
+    <?php if($user=='admin'):?>
+    <title>Admin | Dashboard</title>
+    <?php else :?>
+    <title>Manager | Dashboard</title>
+    <?php endif;?>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
@@ -42,10 +46,17 @@
 
         <!-- Logo -->
         <a href="index2.html" class="logo">
-            <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b>A</b>LT</span>
-            <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>Admin</b>LTE</span>
+            <?php if($user=='admin'):?>
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>A</b></span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Admin</b></span>
+            <?php else :?>
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>M</b></span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Manager</b></span>
+            <?php endif;?>
         </a>
 
         <!-- Header Navbar: style can be found in header.less -->
@@ -77,9 +88,9 @@
         <section class="sidebar">
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
-                <li<?php echo ($page == "kbr" ? " class=active" : ""); ?>><a href="<?php echo ROOT.'/'.$user['rule'];?>/kbr"><i class="fa fa-circle-o text-red"></i> <span>KBR</span></a></li>
-                <li<?php echo ($page == "rhl" ? " class=active" : ""); ?>><a href="<?php echo ROOT.'/'.$user['rule'];?>/rhl"><i class="fa fa-circle-o text-yellow"></i> <span>RHL</span></a></li>
-                <li<?php echo ($page == "obit" ? " class=active" : ""); ?>><a href="<?php echo ROOT.'/'.$user['rule'];?>/obit"><i class="fa fa-circle-o text-aqua"></i> <span>OBIT</span></a></li>
+                <li<?php echo ($page == "kbr" ? " class=active" : ""); ?>><a href="<?php echo ROOT.'/'.$user['rule'];?>/kbr"><i class="fa fa-circle-o text-red"></i> <span>Perkembangan Kebun Bibit Rakyat (KBR)</span></a></li>
+                <li<?php echo ($page == "rhl" ? " class=active" : ""); ?>><a href="<?php echo ROOT.'/'.$user['rule'];?>/rhl"><i class="fa fa-circle-o text-yellow"></i> <span>Perkembangan Kegiatan Rehabilitasi Hutan dan Lahan (RHL)</span></a></li>
+                <li<?php echo ($page == "obit" ? " class=active" : ""); ?>><a href="<?php echo ROOT.'/'.$user['rule'];?>/obit"><i class="fa fa-circle-o text-aqua"></i> <span>Penanaman Satu Milyar Pohon (OBIT)</span></a></li>
             </ul>
         </section>
         <!-- /.sidebar -->
