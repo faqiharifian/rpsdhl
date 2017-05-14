@@ -95,3 +95,76 @@ function delete_obit(){
         return true;
     }
 }
+
+function get_average_by_year_by_sector($sector, $year){
+
+}
+function get_average_per_sector_per_year(){
+    require "db_connection.php";
+    $conn = mysqli_connect($hostname,  $username, $password, $dbname);
+
+    if (!$conn)
+        die("Connection failed: " . mysqli_connect_error());
+
+    $query = mysqli_query($conn, "SELECT avg(count) as count, sector, year FROM obit INNER JOIN events ON obit.id_event = events.id_event GROUP BY sector, year");
+    if(!$query)
+        die("Query failed: " . mysqli_error($conn));
+
+    return mysqli_fetch_all($query, MYSQLI_ASSOC);
+}
+
+function get_average_per_event(){
+    require "db_connection.php";
+    $conn = mysqli_connect($hostname,  $username, $password, $dbname);
+
+    if (!$conn)
+        die("Connection failed: " . mysqli_connect_error());
+
+    $query = mysqli_query($conn, "SELECT obit.id_event as id_event, avg(count) as count, name FROM obit RIGHT JOIN events on obit.id_event = events.id_event GROUP BY obit.id_event ORDER BY obit.id_event ASC");
+    if(!$query)
+        die("Query failed: " . mysqli_error($conn));
+
+    return mysqli_fetch_all($query, MYSQLI_ASSOC);
+}
+
+function get_average_per_event_by_year($year){
+    require "db_connection.php";
+    $conn = mysqli_connect($hostname,  $username, $password, $dbname);
+
+    if (!$conn)
+        die("Connection failed: " . mysqli_connect_error());
+
+    $query = mysqli_query($conn, "SELECT obit.id_event as id_event, count, name FROM obit RIGHT JOIN events on obit.id_event = events.id_event WHERE year = $year");
+    if(!$query)
+        die("Query failed: " . mysqli_error($conn));
+
+    return mysqli_fetch_all($query, MYSQLI_ASSOC);
+}
+
+function get_average_per_year_by_event($id_event){
+    require "db_connection.php";
+    $conn = mysqli_connect($hostname,  $username, $password, $dbname);
+
+    if (!$conn)
+        die("Connection failed: " . mysqli_connect_error());
+
+    $query = mysqli_query($conn, "SELECT obit.id_event as id_event, count, year FROM obit INNER JOIN events on obit.id_event = events.id_event WHERE obit.id_event = $id_event");
+    if(!$query)
+        die("Query failed: " . mysqli_error($conn));
+
+    return mysqli_fetch_all($query, MYSQLI_ASSOC);
+}
+
+function get_years(){
+    require "db_connection.php";
+    $conn = mysqli_connect($hostname,  $username, $password, $dbname);
+
+    if (!$conn)
+        die("Connection failed: " . mysqli_connect_error());
+
+    $query = mysqli_query($conn, "SELECT year FROM obit GROUP BY year ORDER BY year ASC");
+    if(!$query)
+        die("Query failed: " . mysqli_error($conn));
+
+    return mysqli_fetch_all($query, MYSQLI_ASSOC);
+}

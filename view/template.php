@@ -38,6 +38,9 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <!-- jQuery 2.2.3 -->
+    <script src="<?php echo ROOT; ?>/assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -45,8 +48,8 @@
     <header class="main-header">
 
         <!-- Logo -->
-        <a href="index2.html" class="logo">
-            <?php if($user['rule']=='admin'):?>
+        <a href="<?php echo ROOT; ?>" class="logo">
+            <?php if($user['rule'] == 'admin'):?>
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>A</b></span>
                 <!-- logo for regular state and mobile devices -->
@@ -127,9 +130,6 @@
 
 </div>
 <!-- ./wrapper -->
-
-<!-- jQuery 2.2.3 -->
-<script src="<?php echo ROOT; ?>/assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="<?php echo ROOT; ?>/assets/bootstrap/js/bootstrap.min.js"></script>
 <!-- FastClick -->
@@ -160,7 +160,9 @@
             format: "yyyy",
             viewMode: "years",
             minViewMode: "years",
-            autoclose: true
+            autoclose: true,
+            endDate: '+0d',
+            todayHighlight: true
         }
     );
     $('.btn-edit').on('click', function(){
@@ -197,6 +199,51 @@
             var name = $(value).attr('name');
             $(parent).find('input[type=hidden][name='+name+']').val($(value).val());
         })
+    });
+    $('button.obit-add-event.add').on('click', function(){
+        $('.obit-select-event').addClass('hidden');
+        $('.obit-add-event').removeClass('hidden');
+        $('.obit-add-event input').attr('required', 'required');
+        $('.obit-select-event select').removeAttr('required');
+        $('.obit-select-event select').val("");
+        $('button.obit-add-event.add').addClass('hidden');
+    });
+    $('button.obit-add-event.cancel').on('click', function(){
+        $('.obit-select-event').removeClass('hidden');
+        $('.obit-add-event').addClass('hidden');
+        $('.obit-add-event input').removeAttr('required');
+        $('.obit-add-event input').val('');
+        $('.obit-select-event select').attr('required', 'required');
+        $('button.obit-add-event.add').removeClass('hidden');
+    });
+
+    var ctx1 = document.getElementById("myChart1");
+    var myChart1 = new Chart(ctx1, {
+        type: 'bar',
+        data: {
+            labels: ["Semarang", "Demak", "Kudus", "Kudus", "Kudus", "Kudus", "Kudus", "Kudus", "Kudus", "Kudus", "Demak", "Demak", "Demak"],
+            datasets: [
+                {
+                    label: "Unit",
+                    data: [5,7,4,2,3,4,6,7,9,7,6,4,3],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 99, 132, 0.2)'
+                    ]
+                },
+                {
+                    label: "Luas(Ha)",
+                    data: [4,3,6,5,6,7,8,4,6,7,8,8,8],
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(54, 162, 235, 0.2)'
+                    ],
+                }
+            ]
+        }
+
     });
 </script>
 </html>
