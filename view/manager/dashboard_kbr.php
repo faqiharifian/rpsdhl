@@ -8,7 +8,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <h5>Grafik Tahun <?php echo $year;?></h5>
-            <form class="form-inline" method="post" action="<?php echo ROOT;?>/manager/kbr/per_year.php">
+            <form class="form-inline" method="post" action="<?php echo ROOT;?>/manager/kbr/index.php">
                 <div class="form-group">
                     <input type="text"  class="tahun_kbr form-control" name="year" placeholder="Pilih Tahun" required>
                 </div>

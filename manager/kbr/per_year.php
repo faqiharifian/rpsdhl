@@ -14,7 +14,8 @@ $color_units = array();
 $color_larges = array();
 
 if(empty($_POST['year'])){
-    $year = 2015;
+    //last year
+    $year = date("Y",strtotime("-1  year"));
 }else{
     $year = $_POST['year'];
 }
