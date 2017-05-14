@@ -68,6 +68,15 @@
             </div>
         </div>
     </div>
+    <div class="information">
+        <h5>Keterangan Kegiatan:</h5>
+        <?php foreach($event_information as $info): ?>
+            <div class="col-sm-4">
+                <div class="col-xs-2"><?php echo $info['id_event']; ?></div>
+                <div class="col-xs-10"><?php echo $info['name']; ?></div>
+            </div>
+        <?php endforeach; ?>
+    </div>
 </section>
 </form>
 
