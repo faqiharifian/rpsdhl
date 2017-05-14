@@ -7,8 +7,9 @@ $rule = "manager";
 $page = "rhl";
 
 $rhl_cities = array();
-$rhl_units = array();
 $rhl_larges = array();
+$rhl_cities_sum = array();
+$rhl_larges_sum = array();
 
 $color_larges = array();
 
@@ -26,6 +27,16 @@ foreach ($rhl_per_year as $cities){
 
 foreach ($rhl_per_year as $larges){
     $rhl_larges[] = $larges['large'];
+    $color_larges[] = "rgba(255, 99, 12, 1)";
+}
+
+$rhl_sum = get_rhl_sum();
+foreach ($rhl_sum as $cities){
+    $rhl_cities_sum[] = $cities['name'];
+}
+
+foreach ($rhl_sum as $larges){
+    $rhl_larges_sum[] = $larges['large'];
     $color_larges[] = "rgba(255, 99, 12, 1)";
 }
 

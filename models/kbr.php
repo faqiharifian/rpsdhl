@@ -108,3 +108,21 @@ function get_kbr_per_year($year){
     return mysqli_fetch_all($query, MYSQLI_ASSOC);
 }
 
+
+function get_kbr_sum(){
+
+    require "db_connection.php";
+    $conn = mysqli_connect($hostname,  $username, $password, $dbname);
+
+    if (!$conn)
+        die("Connection failed: " . mysqli_connect_error());
+
+    $query = mysqli_query($conn, "SELECT cities.name, SUM(kbr.unit) as unit, SUM(kbr.large) as large FROM kbr INNER JOIN cities ON kbr.id_city=cities.id_city GROUP BY cities.name ");
+
+    if(!$query)
+        die("Query failed: " . mysqli_error($conn));
+
+
+    return mysqli_fetch_all($query, MYSQLI_ASSOC);
+}
+
