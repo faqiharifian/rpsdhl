@@ -45,7 +45,7 @@
                         backgroundColor: color_units
                     },
                     {
-                        label: "Luas(Ha)",
+                        label: "Luas (Ha)",
                         data: larges,
                         backgroundColor: color_larges
                     }

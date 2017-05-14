@@ -88,3 +88,20 @@ function delete_rhl(){
         return true;
     }
 }
+
+function get_rhl_per_year($year){
+
+    require "db_connection.php";
+    $conn = mysqli_connect($hostname,  $username, $password, $dbname);
+
+    if (!$conn)
+        die("Connection failed: " . mysqli_connect_error());
+
+    $query = mysqli_query($conn, "SELECT cities.name, kbr.large, kbr.year FROM kbr INNER JOIN cities ON kbr.id_city=cities.id_city WHERE year='$year'");
+
+    if(!$query)
+        die("Query failed: " . mysqli_error($conn));
+
+
+    return mysqli_fetch_all($query, MYSQLI_ASSOC);
+}
