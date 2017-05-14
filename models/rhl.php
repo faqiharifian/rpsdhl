@@ -7,7 +7,7 @@ function get_rhl(){
     if (!$conn)
         die("Connection failed: " . mysqli_connect_error());
 
-    $query = mysqli_query($conn, "SELECT * FROM rhl INNER JOIN cities ON rhl.id_city = cities.id_city;");
+    $query = mysqli_query($conn, "SELECT * FROM rhl INNER JOIN cities ON rhl.id_city = cities.id_city ORDER BY id_rhl DESC;");
 
     if(!$query)
         die("Query failed: " . mysqli_error($conn));

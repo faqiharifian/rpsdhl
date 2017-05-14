@@ -6,7 +6,7 @@ function get_kbr(){
     if (!$conn)
         die("Connection failed: " . mysqli_connect_error());
 
-    $query = mysqli_query($conn, "SELECT cities.name,kbr.id_kbr, kbr.year,kbr.unit,kbr.large FROM kbr INNER JOIN cities ON kbr.id_city=cities.id_city;");
+    $query = mysqli_query($conn, "SELECT cities.name,kbr.id_kbr, kbr.year,kbr.unit,kbr.large FROM kbr INNER JOIN cities ON kbr.id_city=cities.id_city ORDER BY id_kbr DESC;");
 
     if(!$query)
         die("Query failed: " . mysqli_error($conn));

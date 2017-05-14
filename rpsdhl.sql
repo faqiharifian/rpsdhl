@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 13, 2017 at 07:33 
+-- Generation Time: May 14, 2017 at 03:30 
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -74,6 +74,44 @@ INSERT INTO `cities` (`id_city`, `name`) VALUES
 (36, 'Tahura'),
 (37, 'Persemaian Permanen'),
 (38, 'Hutan Negara');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `events`
+--
+
+CREATE TABLE `events` (
+  `id_event` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `sector` enum('forestry','nonforestry') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `events`
+--
+
+INSERT INTO `events` (`id_event`, `name`, `sector`) VALUES
+(1, 'Rehabilitasi hutan dan Lahan (RHL) Sumber dana APBN (pada kawasan konservasi/lindung, mangrove)', 'forestry'),
+(2, 'RHL Sumber dana APBD Provinsi/Kab/Kota', 'forestry'),
+(3, 'RHL Sumber dana perimbangan keuangan (DAK Kehutanan dan DBH DR)', 'forestry'),
+(4, 'Kebun Bibit Rakyat (KBR)', 'forestry'),
+(5, 'Reklamasi Hutan Bekas Tambang', 'forestry'),
+(6, 'Hutan Rakyat', 'forestry'),
+(7, 'Hutan Kota', 'forestry'),
+(8, 'Penghijauan Lingkungan (APBN)', 'forestry'),
+(9, 'Hutan Tanaman Industri (HTI) oleh BUMS dan BUMN (INHUTANI I - V)', 'forestry'),
+(10, 'Hutan Tanaman Rakyat (HTR)oleh kelompok masyarakat', 'forestry'),
+(11, 'Reboisasi oleh perum Perhutani*', 'forestry'),
+(12, 'lain-lain/LSM', 'forestry'),
+(13, 'Pengembangan pohon trembesi BANPRES di Daerah', 'nonforestry'),
+(14, 'Tanaman perkebunan (Kementerian Pertanian)**', 'nonforestry'),
+(15, 'Tanaman Hortikultura (Kementerian Pertanian)', 'nonforestry'),
+(16, 'Penanaman Pohon di Jalan Tol, waduk dll (kementerian PU)', 'nonforestry'),
+(17, 'Gerakan Perempuan Tanam dan Pelihara Oleh 7 organisasi wanita (SIKIB, PKK, DWP, APPB, DP, KOWANI dan Bhayangkari)', 'nonforestry'),
+(18, 'TNI/Polri', 'nonforestry'),
+(19, 'Penanaman CSR BUMN/BUMD/BUMS', 'nonforestry'),
+(20, 'Lain-lain Kementerian/lembaga', 'nonforestry');
 
 -- --------------------------------------------------------
 
@@ -253,7 +291,7 @@ INSERT INTO `kbr` (`id_kbr`, `id_city`, `unit`, `large`, `year`) VALUES
 
 CREATE TABLE `obit` (
   `id_obit` int(10) UNSIGNED NOT NULL,
-  `name` text NOT NULL,
+  `id_event` int(10) UNSIGNED NOT NULL,
   `count` int(11) NOT NULL,
   `year` year(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -262,107 +300,107 @@ CREATE TABLE `obit` (
 -- Dumping data for table `obit`
 --
 
-INSERT INTO `obit` (`id_obit`, `name`, `count`, `year`) VALUES
-(1, 'Rehabilitasi hutan dan Lahan (RHL) Sumber dana APBN (pada kawasan konservasi/lindung, mangrove)', 1749062, 2011),
-(2, 'RHL Sumber dana APBD Provinsi/Kab/Kota', 2898561, 2011),
-(3, 'RHL Sumber dana perimbangan keuangan (DAK Kehutanan dan DBH DR)', 5365025, 2011),
-(4, 'Kebun Bibit Rakyat (KBR)', 46922754, 2011),
-(5, 'Reklamasi Hutan Bekas Tambang', 20200, 2011),
-(6, 'Hutan Rakyat', 5130538, 2011),
-(7, 'Hutan Kota', 100119, 2011),
-(8, 'Penghijauan Lingkungan (APBN)', 6560032, 2011),
-(9, 'Hutan Tanaman Industri (HTI) oleh BUMS dan BUMN (INHUTANI I - V)', 0, 2011),
-(10, 'Hutan Tanaman Rakyat (HTR)oleh kelompok masyarakat', 10048605, 2011),
-(11, 'Reboisasi oleh perum Perhutani*', 20425828, 2011),
-(12, 'lain-lain/LSM', 15618762, 2011),
-(13, 'Rehabilitasi hutan dan Lahan (RHL) Sumber dana APBN (pada kawasan konservasi/lindung, mangrove)', 2431969, 2012),
-(14, 'RHL Sumber dana APBD Provinsi/Kab/Kota', 5141721, 2012),
-(15, 'RHL Sumber dana perimbangan keuangan (DAK Kehutanan dan DBH DR)', 5916603, 2012),
-(16, 'Kebun Bibit Rakyat (KBR)', 52595775, 2012),
-(17, 'Reklamasi Hutan Bekas Tambang', 20000, 2012),
-(18, 'Hutan Rakyat', 4952405, 2012),
-(19, 'Hutan Kota', 913966, 2012),
-(20, 'Penghijauan Lingkungan (APBN)', 3356659, 2012),
-(21, 'Hutan Tanaman Industri (HTI) oleh BUMS dan BUMN (INHUTANI I - V)', 0, 2012),
-(22, 'Hutan Tanaman Rakyat (HTR)oleh kelompok masyarakat', 4473696, 2012),
-(23, 'Reboisasi oleh perum Perhutani*', 18149776, 2012),
-(24, 'lain-lain/LSM', 11621060, 2012),
-(25, 'Rehabilitasi hutan dan Lahan (RHL) Sumber dana APBN (pada kawasan konservasi/lindung, mangrove)', 1779740, 2013),
-(26, 'RHL Sumber dana APBD Provinsi/Kab/Kota', 3110054, 2013),
-(27, 'RHL Sumber dana perimbangan keuangan (DAK Kehutanan dan DBH DR)', 4044604, 2013),
-(28, 'Kebun Bibit Rakyat (KBR)', 50242604, 2013),
-(29, 'Reklamasi Hutan Bekas Tambang', 18723, 2013),
-(30, 'Hutan Rakyat', 9842473, 2013),
-(31, 'Hutan Kota', 228049, 2013),
-(32, 'Penghijauan Lingkungan (APBN)', 1416891, 2013),
-(33, 'Hutan Tanaman Industri (HTI) oleh BUMS dan BUMN (INHUTANI I - V)', 0, 2013),
-(34, 'Hutan Tanaman Rakyat (HTR)oleh kelompok masyarakat', 2049716, 2013),
-(35, 'Reboisasi oleh perum Perhutani*', 15310800, 2013),
-(36, 'lain-lain/LSM', 10514358, 2013),
-(37, 'Rehabilitasi hutan dan Lahan (RHL) Sumber dana APBN (pada kawasan konservasi/lindung, mangrove)', 937871, 2014),
-(38, 'RHL Sumber dana APBD Provinsi/Kab/Kota', 1748406, 2014),
-(39, 'RHL Sumber dana perimbangan keuangan (DAK Kehutanan dan DBH DR)', 5704928, 2014),
-(40, 'Kebun Bibit Rakyat (KBR)', 19403022, 2014),
-(41, 'Reklamasi Hutan Bekas Tambang', 1655850, 2014),
-(42, 'Hutan Rakyat', 10109721, 2014),
-(43, 'Hutan Kota', 220644, 2014),
-(44, 'Penghijauan Lingkungan (APBN)', 658418, 2014),
-(45, 'Hutan Tanaman Industri (HTI) oleh BUMS dan BUMN (INHUTANI I - V)', 0, 2014),
-(46, 'Hutan Tanaman Rakyat (HTR)oleh kelompok masyarakat', 2742276, 2014),
-(47, 'Reboisasi oleh perum Perhutani*', 20023075, 2014),
-(48, 'lain-lain/LSM', 16976287, 2014),
-(49, 'Rehabilitasi hutan dan Lahan (RHL) Sumber dana APBN (pada kawasan konservasi/lindung, mangrove)', 1170689, 2015),
-(50, 'RHL Sumber dana APBD Provinsi/Kab/Kota', 1233296, 2015),
-(51, 'RHL Sumber dana perimbangan keuangan (DAK Kehutanan dan DBH DR)', 3479435, 2015),
-(52, 'Kebun Bibit Rakyat (KBR)', 6294985, 2015),
-(53, 'Reklamasi Hutan Bekas Tambang', 1319000, 2015),
-(54, 'Hutan Rakyat', 760159, 2015),
-(55, 'Hutan Kota', 266196, 2015),
-(56, 'Penghijauan Lingkungan (APBN)', 9728363, 2015),
-(57, 'Hutan Tanaman Industri (HTI) oleh BUMS dan BUMN (INHUTANI I - V)', 0, 2015),
-(58, 'Hutan Tanaman Rakyat (HTR)oleh kelompok masyarakat', 2193615, 2015),
-(59, 'Reboisasi oleh perum Perhutani*', 18222791, 2015),
-(60, 'lain-lain/LSM', 10043196, 2015),
-(61, 'Pengembangan pohon trembesi BANPRES di Daerah', 690370, 2011),
-(62, 'Tanaman perkebunan (Kementerian Pertanian)**', 1607251, 2011),
-(63, 'Tanaman Hortikultura (Kementerian Pertanian)', 1458717, 2011),
-(64, 'Penanaman Pohon di Jalan Tol, waduk dll (kementerian PU)', 27942, 2011),
-(65, 'Gerakan Perempuan Tanam dan Pelihara Oleh 7 organisasi wanita (SIKIB, PKK, DWP, APPB, DP, KOWANI dan Bhayangkari)', 378721, 2011),
-(66, 'TNI/Polri', 1965351, 2011),
-(67, 'Penanaman CSR BUMN/BUMD/BUMS', 6233261, 2011),
-(68, 'Lain-lain Kementerian/lembaga', 3345560, 2011),
-(69, 'Pengembangan pohon trembesi BANPRES di Daerah', 20250, 2012),
-(70, 'Tanaman perkebunan (Kementerian Pertanian)**', 2921496, 2012),
-(71, 'Tanaman Hortikultura (Kementerian Pertanian)', 172282, 2012),
-(72, 'Penanaman Pohon di Jalan Tol, waduk dll (kementerian PU)', 6159, 2012),
-(73, 'Gerakan Perempuan Tanam dan Pelihara Oleh 7 organisasi wanita (SIKIB, PKK, DWP, APPB, DP, KOWANI dan Bhayangkari)', 251580, 2012),
-(74, 'TNI/Polri', 1761210, 2012),
-(75, 'Penanaman CSR BUMN/BUMD/BUMS', 6886321, 2012),
-(76, 'Lain-lain Kementerian/lembaga', 5268401, 2012),
-(77, 'Pengembangan pohon trembesi BANPRES di Daerah', 11732, 2013),
-(78, 'Tanaman perkebunan (Kementerian Pertanian)**', 1271389, 2013),
-(79, 'Tanaman Hortikultura (Kementerian Pertanian)', 1300696, 2013),
-(80, 'Penanaman Pohon di Jalan Tol, waduk dll (kementerian PU)', 31756, 2013),
-(81, 'Gerakan Perempuan Tanam dan Pelihara Oleh 7 organisasi wanita (SIKIB, PKK, DWP, APPB, DP, KOWANI dan Bhayangkari)', 1069221, 2013),
-(82, 'TNI/Polri', 2821079, 2013),
-(83, 'Penanaman CSR BUMN/BUMD/BUMS', 9078219, 2013),
-(84, 'Lain-lain Kementerian/lembaga', 4422811, 2013),
-(85, 'Pengembangan pohon trembesi BANPRES di Daerah', 323132, 2014),
-(86, 'Tanaman perkebunan (Kementerian Pertanian)**', 2584183, 2014),
-(87, 'Tanaman Hortikultura (Kementerian Pertanian)', 2462456, 2014),
-(88, 'Penanaman Pohon di Jalan Tol, waduk dll (kementerian PU)', 32330, 2014),
-(89, 'Gerakan Perempuan Tanam dan Pelihara Oleh 7 organisasi wanita (SIKIB, PKK, DWP, APPB, DP, KOWANI dan Bhayangkari)', 370370, 2014),
-(90, 'TNI/Polri', 264695, 2014),
-(91, 'Penanaman CSR BUMN/BUMD/BUMS', 5009435, 2014),
-(92, 'Lain-lain Kementerian/lembaga', 9727366, 2014),
-(93, 'Pengembangan pohon trembesi BANPRES di Daerah', 0, 2015),
-(94, 'Tanaman perkebunan (Kementerian Pertanian)**', 0, 2015),
-(95, 'Tanaman Hortikultura (Kementerian Pertanian)', 0, 2015),
-(96, 'Penanaman Pohon di Jalan Tol, waduk dll (kementerian PU)', 0, 2015),
-(97, 'Gerakan Perempuan Tanam dan Pelihara Oleh 7 organisasi wanita (SIKIB, PKK, DWP, APPB, DP, KOWANI dan Bhayangkari)', 0, 2015),
-(98, 'TNI/Polri', 0, 2015),
-(99, 'Penanaman CSR BUMN/BUMD/BUMS', 0, 2015),
-(100, 'Lain-lain Kementerian/lembaga', 0, 2015);
+INSERT INTO `obit` (`id_obit`, `id_event`, `count`, `year`) VALUES
+(1, 1, 1749062, 2011),
+(2, 2, 2898561, 2011),
+(3, 3, 5365025, 2011),
+(4, 4, 46922754, 2011),
+(5, 5, 20200, 2011),
+(6, 6, 5130538, 2011),
+(7, 7, 100119, 2011),
+(8, 8, 6560032, 2011),
+(9, 9, 0, 2011),
+(10, 10, 10048605, 2011),
+(11, 11, 20425828, 2011),
+(12, 12, 15618762, 2011),
+(13, 1, 2431969, 2012),
+(14, 2, 5141721, 2012),
+(15, 3, 5916603, 2012),
+(16, 4, 52595775, 2012),
+(17, 5, 20000, 2012),
+(18, 6, 4952405, 2012),
+(19, 7, 913966, 2012),
+(20, 8, 3356659, 2012),
+(21, 9, 0, 2012),
+(22, 10, 4473696, 2012),
+(23, 11, 18149776, 2012),
+(24, 12, 11621060, 2012),
+(25, 1, 1779740, 2013),
+(26, 2, 3110054, 2013),
+(27, 3, 4044604, 2013),
+(28, 4, 50242604, 2013),
+(29, 5, 18723, 2013),
+(30, 6, 9842473, 2013),
+(31, 7, 228049, 2013),
+(32, 8, 1416891, 2013),
+(33, 9, 0, 2013),
+(34, 10, 2049716, 2013),
+(35, 11, 15310800, 2013),
+(36, 12, 10514358, 2013),
+(37, 1, 937871, 2014),
+(38, 2, 1748406, 2014),
+(39, 3, 5704928, 2014),
+(40, 4, 19403022, 2014),
+(41, 5, 1655850, 2014),
+(42, 6, 10109721, 2014),
+(43, 7, 220644, 2014),
+(44, 8, 658418, 2014),
+(45, 9, 0, 2014),
+(46, 10, 2742276, 2014),
+(47, 11, 20023075, 2014),
+(48, 12, 16976287, 2014),
+(49, 1, 1170689, 2015),
+(50, 2, 1233296, 2015),
+(51, 3, 3479435, 2015),
+(52, 4, 6294985, 2015),
+(53, 5, 1319000, 2015),
+(54, 6, 760159, 2015),
+(55, 7, 266196, 2015),
+(56, 8, 9728363, 2015),
+(57, 9, 0, 2015),
+(58, 10, 2193615, 2015),
+(59, 11, 18222791, 2015),
+(60, 12, 10043196, 2015),
+(61, 13, 690370, 2011),
+(62, 14, 1607251, 2011),
+(63, 15, 1458717, 2011),
+(64, 16, 27942, 2011),
+(65, 17, 378721, 2011),
+(66, 18, 1965351, 2011),
+(67, 19, 6233261, 2011),
+(68, 20, 3345560, 2011),
+(69, 13, 20250, 2012),
+(70, 14, 2921496, 2012),
+(71, 15, 172282, 2012),
+(72, 16, 6159, 2012),
+(73, 17, 251580, 2012),
+(74, 18, 1761210, 2012),
+(75, 19, 6886321, 2012),
+(76, 20, 5268401, 2012),
+(77, 13, 11732, 2013),
+(78, 14, 1271389, 2013),
+(79, 15, 1300696, 2013),
+(80, 16, 31756, 2013),
+(81, 17, 1069221, 2013),
+(82, 18, 2821079, 2013),
+(83, 19, 9078219, 2013),
+(84, 20, 4422811, 2013),
+(85, 13, 323132, 2014),
+(86, 14, 2584183, 2014),
+(87, 15, 2462456, 2014),
+(88, 16, 32330, 2014),
+(89, 17, 370370, 2014),
+(90, 18, 264695, 2014),
+(91, 19, 5009435, 2014),
+(92, 20, 9727366, 2014),
+(93, 13, 0, 2015),
+(94, 14, 0, 2015),
+(95, 15, 0, 2015),
+(96, 16, 0, 2015),
+(97, 17, 0, 2015),
+(98, 18, 0, 2015),
+(99, 19, 0, 2015),
+(100, 20, 0, 2015);
 
 -- --------------------------------------------------------
 
@@ -594,6 +632,12 @@ ALTER TABLE `cities`
   ADD PRIMARY KEY (`id_city`);
 
 --
+-- Indexes for table `events`
+--
+ALTER TABLE `events`
+  ADD PRIMARY KEY (`id_event`);
+
+--
 -- Indexes for table `kbr`
 --
 ALTER TABLE `kbr`
@@ -604,7 +648,8 @@ ALTER TABLE `kbr`
 -- Indexes for table `obit`
 --
 ALTER TABLE `obit`
-  ADD PRIMARY KEY (`id_obit`);
+  ADD PRIMARY KEY (`id_obit`),
+  ADD KEY `id_event` (`id_event`);
 
 --
 -- Indexes for table `rhl`
@@ -629,6 +674,11 @@ ALTER TABLE `users`
 --
 ALTER TABLE `cities`
   MODIFY `id_city` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+--
+-- AUTO_INCREMENT for table `events`
+--
+ALTER TABLE `events`
+  MODIFY `id_event` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `kbr`
 --

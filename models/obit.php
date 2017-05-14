@@ -7,7 +7,7 @@ function get_obit(){
     if (!$conn)
         die("Connection failed: " . mysqli_connect_error());
 
-    $query = mysqli_query($conn, "SELECT * FROM obit;");
+    $query = mysqli_query($conn, "SELECT * FROM obit INNER JOIN events on obit.id_event = events.id_event ORDER BY id_obit DESC;");
 
     if(!$query)
         die("Query failed: " . mysqli_error($conn));
@@ -19,7 +19,7 @@ function get_obit(){
 function store_obit(){
     if (session_status() == PHP_SESSION_NONE)
         session_start();
-    if((empty($_POST['name']))||(empty($_POST['year']))||(empty($_POST['count']))){
+    if((empty($_POST['event']))||(empty($_POST['year']))||(empty($_POST['count']))){
         $_SESSION['error_store_obit'] = "Harap lengkapi isian formulir.";
         return false;
     }else{
@@ -28,10 +28,10 @@ function store_obit(){
 
         if (!$conn)
             die("Connection failed: " . mysqli_connect_error());
-        $name = mysqli_real_escape_string($conn, $_POST['name']);
+        $id_event = $_POST['event'];
         $count = $_POST['count'];
         $year = $_POST['year'];
-        $query = mysqli_query($conn, "INSERT INTO obit (name,year,count) VALUES('$name', $year, $count);");
+        $query = mysqli_query($conn, "INSERT INTO obit (id_event,year,count) VALUES('$id_event', $year, $count);");
         if(!$query)
             die("Query failed: " . mysqli_error($conn));
 
@@ -43,7 +43,7 @@ function store_obit(){
 function update_obit(){
     if (session_status() == PHP_SESSION_NONE)
         session_start();
-    if((empty($_POST['id_obit']))||(empty($_POST['name']))||(empty($_POST['year']))||(empty($_POST['count']))){
+    if((empty($_POST['id_obit']))||(empty($_POST['event']))||(empty($_POST['year']))||(empty($_POST['count']))){
         $_SESSION['error_update_obit'] = "Harap lengkapi isian formulir.";
         if(!empty($_POST['id_obit']))
             $_SESSION['error_update_obit_id'] = $_POST['id_obit'];
@@ -55,10 +55,10 @@ function update_obit(){
         if (!$conn)
             die("Connection failed: " . mysqli_connect_error());
         $id_obit = $_POST['id_obit'];
-        $name = mysqli_real_escape_string($conn, $_POST['name']);
+        $id_event = $_POST['event'];
         $count = $_POST['count'];
         $year = $_POST['year'];
-        $query = mysqli_query($conn, "UPDATE obit SET name = '$name', year = $year, count = $count WHERE id_obit = $id_obit;");
+        $query = mysqli_query($conn, "UPDATE obit SET id_event = '$id_event', year = $year, count = $count WHERE id_obit = $id_obit;");
         if(!$query)
             die("Query failed: " . mysqli_error($conn));
 

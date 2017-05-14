@@ -37,7 +37,12 @@
         <div class="panel-body">
             <form class="form-inline" method="post" action="<?php echo ROOT; ?>/admin/obit/store.php">
                 <div class="form-group">
-                    <input type="text"  class="form-control" name="name" placeholder="Nama Kegiatan" required>
+                    <select class="form-control" name="event" required style="max-width: 200px">
+                        <option disabled selected>Pilih Kegiatan</option>
+                        <?php foreach($data_event as $event): ?>
+                            <option value="<?php echo $event['id_event']; ?>"><?php echo $event['name']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
                 <div class="form-group">
                     <input type="text"  class="tahun_kbr form-control" name="year" placeholder="Tahun" required>
@@ -61,7 +66,7 @@
                     <th>Nama Kegiatan</th>
                     <th>Tahun</th>
                     <th>Jumlah Pohon (Btg)</th>
-                    <th>Action</th>
+                    <th style="min-width: 150px;">Action</th>
                 </tr>
                 <?php if(empty($data_obit)): ?>
                 <tr>
