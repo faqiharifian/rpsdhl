@@ -36,8 +36,20 @@
         </div>
         <div class="panel-body">
             <form class="form-inline" method="post" action="<?php echo ROOT; ?>/admin/obit/store.php">
-                <div class="form-group">
-                    <input type="text"  class="form-control" name="name" placeholder="Nama Kegiatan" required>
+                <div style="padding-bottom: 5px;">
+                    <button class="btn btn-default obit-add-event add" type="button">Tambah kegiatan</button>
+                    <div class="form-group obit-add-event hidden" style=" min-width: 200px;">
+                        <input type="text" class="form-control" name="name" placeholder="Nama Kegiatan" style="width: 100%;">
+                    </div>
+                    <button class="btn btn-default obit-add-event cancel hidden" type="button">Batal</button>
+                </div>
+                <div class="form-group obit-select-event">
+                    <select class="form-control" name="event" required style="max-width: 200px">
+                        <option disabled selected>Pilih Kegiatan</option>
+                        <?php foreach($data_event as $event): ?>
+                            <option value="<?php echo $event['id_event']; ?>"><?php echo $event['name']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
                 <div class="form-group">
                     <input type="text"  class="tahun_kbr form-control" name="year" placeholder="Tahun" required>
@@ -61,7 +73,7 @@
                     <th>Nama Kegiatan</th>
                     <th>Tahun</th>
                     <th>Jumlah Pohon (Btg)</th>
-                    <th>Action</th>
+                    <th style="min-width: 150px;">Action</th>
                 </tr>
                 <?php if(empty($data_obit)): ?>
                 <tr>
@@ -84,7 +96,7 @@
                             </span>
                         </td>
                         <td>
-                            <span class="view <?php echo ($id_error == $obit['id_obit'] ? "hidden" : "") ?>"><?php echo $obit['count']; ?></span>
+                            <span class="view <?php echo ($id_error == $obit['id_obit'] ? "hidden" : "") ?>"><?php echo number_format($obit['count'], 0, ",", "."); ?></span>
                             <span class="edit <?php echo ($id_error == $obit['id_obit'] ? "" : "hidden") ?>">
                                 <input type="number" class="form-control" name="count" placeholder="Jumlah Pohon (Btg)" value="<?php echo $obit['count']; ?>" required>
                             </span>
