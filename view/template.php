@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <?php if($user=='admin'):?>
+    <?php if($user['rule']=='admin'):?>
     <title>Admin | Dashboard</title>
     <?php else :?>
     <title>Manager | Dashboard</title>
@@ -46,7 +46,7 @@
 
         <!-- Logo -->
         <a href="index2.html" class="logo">
-            <?php if($user=='admin'):?>
+            <?php if($user['rule']=='admin'):?>
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>A</b></span>
                 <!-- logo for regular state and mobile devices -->
