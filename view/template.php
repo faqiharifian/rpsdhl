@@ -133,7 +133,7 @@
 <script src="<?php echo ROOT; ?>/assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- ChartJS 1.0.1 -->
 <script src="<?php echo ROOT; ?>/assets/plugins/chartjs/Chart.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="<?php echo ROOT; ?>/assets/dist/js/pages/dashboard2.js"></script>
 <!-- AdminLTE for demo purposes -->
@@ -185,35 +185,6 @@
             var name = $(value).attr('name');
             $(parent).find('input[type=hidden][name='+name+']').val($(value).val());
         })
-    });
-
-    var ctx1 = document.getElementById("myChart1");
-    var myChart1 = new Chart(ctx1, {
-        type: 'bar',
-        data: {
-            labels: ["Semarang", "Demak", "Kudus", "Kudus", "Kudus", "Kudus", "Kudus", "Kudus", "Kudus", "Kudus", "Demak", "Demak", "Demak"],
-            datasets: [
-                {
-                    label: "Unit",
-                    data: [5,7,4,2,3,4,6,7,9,7,6,4,3],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)'
-                    ]
-                },
-                {
-                    label: "Luas(Ha)",
-                    data: [4,3,6,5,6,7,8,4,6,7,8,8,8],
-                    backgroundColor: [
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(54, 162, 235, 0.2)'
-                    ],
-                }
-            ]
-        }
-
     });
 </script>
 </html>
