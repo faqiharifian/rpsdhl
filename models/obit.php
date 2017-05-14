@@ -120,7 +120,7 @@ function get_average_per_event(){
     if (!$conn)
         die("Connection failed: " . mysqli_connect_error());
 
-    $query = mysqli_query($conn, "SELECT avg(count) as count, name FROM obit INNER JOIN events on obit.id_event = events.id_event GROUP BY obit.id_event");
+    $query = mysqli_query($conn, "SELECT obit.id_event as id_event, avg(count) as count, name FROM obit RIGHT JOIN events on obit.id_event = events.id_event GROUP BY obit.id_event ORDER BY obit.id_event ASC");
     if(!$query)
         die("Query failed: " . mysqli_error($conn));
 
@@ -134,7 +134,7 @@ function get_average_per_event_by_year($year){
     if (!$conn)
         die("Connection failed: " . mysqli_connect_error());
 
-    $query = mysqli_query($conn, "SELECT count, name FROM obit INNER JOIN events on obit.id_event = events.id_event WHERE year = $year");
+    $query = mysqli_query($conn, "SELECT obit.id_event as id_event, count, name FROM obit RIGHT JOIN events on obit.id_event = events.id_event WHERE year = $year");
     if(!$query)
         die("Query failed: " . mysqli_error($conn));
 
@@ -148,7 +148,7 @@ function get_average_per_year_by_event($id_event){
     if (!$conn)
         die("Connection failed: " . mysqli_connect_error());
 
-    $query = mysqli_query($conn, "SELECT count, year FROM obit INNER JOIN events on obit.id_event = events.id_event WHERE obit.id_event = $id_event");
+    $query = mysqli_query($conn, "SELECT obit.id_event as id_event, count, year FROM obit INNER JOIN events on obit.id_event = events.id_event WHERE obit.id_event = $id_event");
     if(!$query)
         die("Query failed: " . mysqli_error($conn));
 

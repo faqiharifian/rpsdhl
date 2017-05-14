@@ -17,12 +17,8 @@ foreach(get_average_per_sector_per_year() as $d){
 $years = array();
 $forestries = array();
 $nonforestries = array();
-$color_units = array();
-$color_larges = array();
 foreach(get_years() as $y){
     $years[] = $y['year'];
-    $color_units[] = "rgba(255, 99, 132, 1)";
-    $color_larges[] = "rgba(255, 99, 12, 1)";
     if(!isset($tmp_forestries[$y['year']]))
         $forestries[] = 0;
     else
@@ -33,9 +29,30 @@ foreach(get_years() as $y){
         $nonforestries[] = $tmp_nonforestries[$y['year']];
 }
 
-$events = get_events();
+$events = get_average_per_event();
+$chart2_label = array();
+$chart2_data = array();
+foreach(get_average_per_event() as $e){
+    $chart2_label[] = $e['id_event'];
+    $chart2_data[] = $e['count'];
+}
+
 $year = isset($_GET['year']) ? $_GET['year'] : $years[sizeof($years)-1];
-$id_event = isset($_GET['id_event']) ? $_GET['id_event'] : 3;
+$chart3_label = array();
+$chart3_data = array();
+foreach(get_average_per_event_by_year($year) as $d){
+    $chart3_label[] = $d['id_event'];
+    $chart3_data[] = $d['count'];
+}
+
+$id_event = isset($_GET['event']) ? $_GET['event'] : 3;
+$chart4_label = array();
+$chart4_data = array();
+foreach(get_average_per_year_by_event($id_event) as $d){
+    $chart4_label[] = $d['year'];
+    $chart4_data[] = $d['count'];
+}
+
 $event = "";
 foreach($events as $e){
     if($e['id_event'] == $id_event){
@@ -44,8 +61,5 @@ foreach($events as $e){
     }
 }
 
-$avg_per_sector_per_year = get_average_per_sector_per_year();
-$avg_per_event = get_average_per_event();
-$avg_per_event_by_year = get_average_per_event_by_year($year);
-$avg_per_year_by_event = get_average_per_year_by_event($id_event);
+$event_information = get_events();
 include(ROOTPATH."/view/template.php");
