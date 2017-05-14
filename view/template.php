@@ -88,9 +88,10 @@
         <section class="sidebar">
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
-                <li<?php echo ($page == "kbr" ? " class=active" : ""); ?>><a href="<?php echo ROOT.'/'.$user['rule'];?>/kbr"><i class="fa fa-circle-o text-red"></i> <span>Perkembangan Kebun Bibit Rakyat (KBR)</span></a></li>
-                <li<?php echo ($page == "rhl" ? " class=active" : ""); ?>><a href="<?php echo ROOT.'/'.$user['rule'];?>/rhl"><i class="fa fa-circle-o text-yellow"></i> <span>Perkembangan Kegiatan Rehabilitasi Hutan dan Lahan (RHL)</span></a></li>
-                <li<?php echo ($page == "obit" ? " class=active" : ""); ?>><a href="<?php echo ROOT.'/'.$user['rule'];?>/obit"><i class="fa fa-circle-o text-aqua"></i> <span>Penanaman Satu Milyar Pohon (OBIT)</span></a></li>
+                <li class="header">MENU</li>
+                <li<?php echo ($page == "kbr" ? " class=active" : ""); ?>><a href="<?php echo ROOT.'/'.$user['rule'];?>/kbr"><i class="fa fa-circle-o text-red"></i> <span>Perkembangan Kebun <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bibit Rakyat (KBR)</span></a></li>
+                <li<?php echo ($page == "rhl" ? " class=active" : ""); ?>><a href="<?php echo ROOT.'/'.$user['rule'];?>/rhl"><i class="fa fa-circle-o text-yellow"></i> <span>Perkembangan Kegiatan <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rehabilitasi Hutan <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dan Lahan (RHL)</span></a></li>
+                <li<?php echo ($page == "obit" ? " class=active" : ""); ?>><a href="<?php echo ROOT.'/'.$user['rule'];?>/obit"><i class="fa fa-circle-o text-aqua"></i> <span>Penanaman Satu <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Milyar Pohon (OBIT)</span></a></li>
             </ul>
         </section>
         <!-- /.sidebar -->
