@@ -1,7 +1,7 @@
 <?php
 
 function get_rhl(){
-    require_once "db_connection.php";
+    require "db_connection.php";
     $conn = mysqli_connect($hostname,  $username, $password, $dbname);
 
     if (!$conn)
@@ -23,7 +23,7 @@ function store_rhl(){
         $_SESSION['error_store_rhl'] = "Harap lengkapi isian formulir.";
         return false;
     }else{
-        require_once "db_connection.php";
+        require "db_connection.php";
         $conn = mysqli_connect($hostname,  $username, $password, $dbname);
 
         if (!$conn)
@@ -49,7 +49,7 @@ function update_rhl(){
             $_SESSION['error_update_rhl_id'] = $_POST['id_rhl'];
         return false;
     }else{
-        require_once "db_connection.php";
+        require "db_connection.php";
         $conn = mysqli_connect($hostname,  $username, $password, $dbname);
 
         if (!$conn)
@@ -74,7 +74,7 @@ function delete_rhl(){
         $_SESSION['error_delete_rhl'] = "Gagal menghapus data.";
         return false;
     }else{
-        require_once "db_connection.php";
+        require "db_connection.php";
         $conn = mysqli_connect($hostname,  $username, $password, $dbname);
 
         if (!$conn)

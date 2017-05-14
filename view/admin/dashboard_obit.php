@@ -36,7 +36,14 @@
         </div>
         <div class="panel-body">
             <form class="form-inline" method="post" action="<?php echo ROOT; ?>/admin/obit/store.php">
-                <div class="form-group">
+                <div style="padding-bottom: 5px;">
+                    <button class="btn btn-default obit-add-event add" type="button">Tambah kegiatan</button>
+                    <div class="form-group obit-add-event hidden" style=" min-width: 200px;">
+                        <input type="text" class="form-control" name="name" placeholder="Nama Kegiatan" style="width: 100%;">
+                    </div>
+                    <button class="btn btn-default obit-add-event cancel hidden" type="button">Batal</button>
+                </div>
+                <div class="form-group obit-select-event">
                     <select class="form-control" name="event" required style="max-width: 200px">
                         <option disabled selected>Pilih Kegiatan</option>
                         <?php foreach($data_event as $event): ?>

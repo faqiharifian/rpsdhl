@@ -1,6 +1,6 @@
 <?php
 function get_kbr(){
-    require_once "db_connection.php";
+    require "db_connection.php";
     $conn = mysqli_connect($hostname,  $username, $password, $dbname);
 
     if (!$conn)
@@ -22,7 +22,7 @@ function store_kbr(){
         $_SESSION['error_store_kbr'] = "Harap lengkapi isian formulir.";
         return false;
     }else{
-        require_once "db_connection.php";
+        require "db_connection.php";
         $conn = mysqli_connect($hostname,  $username, $password, $dbname);
 
         if (!$conn)
@@ -49,7 +49,7 @@ function update_kbr(){
             $_SESSION['error_update_kbr_id'] = $_POST['id_kbr'];
         return false;
     }else{
-        require_once "db_connection.php";
+        require "db_connection.php";
         $conn = mysqli_connect($hostname,  $username, $password, $dbname);
 
         if (!$conn)
@@ -75,7 +75,7 @@ function delete_kbr(){
         $_SESSION['error_delete_kbr'] = "Gagal menghapus data.";
         return false;
     }else{
-        require_once "db_connection.php";
+        require "db_connection.php";
         $conn = mysqli_connect($hostname,  $username, $password, $dbname);
 
         if (!$conn)

@@ -73,7 +73,7 @@
                     <th>Tahun</th>
                     <th>Jumlah Unit</th>
                     <th>Luas Lahan (Ha)</th>
-                    <th>Action</th>
+                    <th style="min-width: 150px;">Action</th>
                 </tr>
                     <?php if(!empty($data_kbr)):?>
                         <?php foreach ($data_kbr as $key => $item_kbr):?>

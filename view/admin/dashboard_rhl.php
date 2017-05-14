@@ -66,7 +66,7 @@
                     <th>Kabupaten</th>
                     <th>Tahun</th>
                     <th>Luas Lahan (Ha)</th>
-                    <th>Action</th>
+                    <th style="min-width: 150px;">Action</th>
                 </tr>
                 <?php if(empty($data_rhl)): ?>
                     <tr>

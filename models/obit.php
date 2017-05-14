@@ -1,7 +1,7 @@
 <?php
 
 function get_obit(){
-    require_once "db_connection.php";
+    require "db_connection.php";
     $conn = mysqli_connect($hostname,  $username, $password, $dbname);
 
     if (!$conn)
@@ -19,16 +19,23 @@ function get_obit(){
 function store_obit(){
     if (session_status() == PHP_SESSION_NONE)
         session_start();
-    if((empty($_POST['event']))||(empty($_POST['year']))||(empty($_POST['count']))){
+    if((empty($_POST['event']) && empty($_POST['name']))||(empty($_POST['year']))||(empty($_POST['count']))){
         $_SESSION['error_store_obit'] = "Harap lengkapi isian formulir.";
         return false;
     }else{
-        require_once "db_connection.php";
+        require "db_connection.php";
+        require "event.php";
         $conn = mysqli_connect($hostname,  $username, $password, $dbname);
 
         if (!$conn)
             die("Connection failed: " . mysqli_connect_error());
-        $id_event = $_POST['event'];
+
+
+        if(!empty($_POST['name']))
+            $id_event = store_event($_POST['name']);
+        else
+            $id_event = $_POST['event'];
+
         $count = $_POST['count'];
         $year = $_POST['year'];
         $query = mysqli_query($conn, "INSERT INTO obit (id_event,year,count) VALUES('$id_event', $year, $count);");
@@ -49,7 +56,7 @@ function update_obit(){
             $_SESSION['error_update_obit_id'] = $_POST['id_obit'];
         return false;
     }else{
-        require_once "db_connection.php";
+        require "db_connection.php";
         $conn = mysqli_connect($hostname,  $username, $password, $dbname);
 
         if (!$conn)
@@ -74,7 +81,7 @@ function delete_obit(){
         $_SESSION['error_delete_obit'] = "Gagal menghapus data.";
         return false;
     }else{
-        require_once "db_connection.php";
+        require "db_connection.php";
         $conn = mysqli_connect($hostname,  $username, $password, $dbname);
 
         if (!$conn)
