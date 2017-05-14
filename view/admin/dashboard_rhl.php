@@ -94,7 +94,7 @@
                             </span>
                         </td>
                         <td>
-                            <span class="view <?php echo ($id_error == $rhl['id_rhl'] ? "hidden" : "") ?>"><?php echo $rhl['large']; ?></span>
+                            <span class="view <?php echo ($id_error == $rhl['id_rhl'] ? "hidden" : "") ?>"><?php echo number_format($rhl['large'], 2, ",", "."); ?></span>
                             <span class="edit <?php echo ($id_error == $rhl['id_rhl'] ? "" : "hidden") ?>">
                                 <input type="number" class="form-control" name="large" placeholder="Luas Lahan (Ha)" value="<?php echo $rhl['large']; ?>" required>
                             </span>

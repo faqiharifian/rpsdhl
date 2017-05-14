@@ -99,13 +99,13 @@
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="view <?php echo ($id_error == $item_kbr['id_kbr'] ? "hidden" : "") ?>"><?php echo $item_kbr['unit']; ?></span>
+                                    <span class="view <?php echo ($id_error == $item_kbr['id_kbr'] ? "hidden" : "") ?>"><?php echo number_format($item_kbr['unit'], 0, ",", "."); ?></span>
                                     <span class="edit <?php echo ($id_error == $item_kbr['id_kbr'] ? "" : "hidden") ?>">
                                         <input type="text"  class="form-control" name="unit" placeholder="Jumlah Unit" value="<?php echo $item_kbr['unit']; ?>" required>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="view <?php echo ($id_error == $item_kbr['id_kbr'] ? "hidden" : "") ?>"><?php echo $item_kbr['large']; ?></span>
+                                    <span class="view <?php echo ($id_error == $item_kbr['id_kbr'] ? "hidden" : "") ?>"><?php echo number_format($item_kbr['large'], 2, ",", "."); ?></span>
                                     <span class="edit <?php echo ($id_error == $item_kbr['id_kbr'] ? "" : "hidden") ?>">
                                         <input type="text"  class="form-control" name="large" placeholder="Luas Lahan (Ha)" value="<?php echo $item_kbr['large']; ?>" required>
                                     </span>

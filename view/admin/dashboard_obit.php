@@ -96,7 +96,7 @@
                             </span>
                         </td>
                         <td>
-                            <span class="view <?php echo ($id_error == $obit['id_obit'] ? "hidden" : "") ?>"><?php echo $obit['count']; ?></span>
+                            <span class="view <?php echo ($id_error == $obit['id_obit'] ? "hidden" : "") ?>"><?php echo number_format($obit['count'], 0, ",", "."); ?></span>
                             <span class="edit <?php echo ($id_error == $obit['id_obit'] ? "" : "hidden") ?>">
                                 <input type="number" class="form-control" name="count" placeholder="Jumlah Pohon (Btg)" value="<?php echo $obit['count']; ?>" required>
                             </span>
