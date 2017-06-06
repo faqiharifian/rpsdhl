@@ -86,7 +86,12 @@
                         <td>
                             <span class="view <?php echo ($id_error == $obit['id_obit'] ? "hidden" : "") ?>"><?php echo $obit['name']; ?></span>
                             <span class="edit <?php echo ($id_error == $obit['id_obit'] ? "" : "hidden") ?>">
-                                <input type="text"  class="form-control" name="name" placeholder="Nama Kegiatan" value="<?php echo $obit['name']; ?>" required>
+                                <select class="form-control" name="event" required>
+                                    <option disabled selected>Pilih Kegiatan</option>
+                                    <?php foreach($data_event as $event): ?>
+                                        <option value="<?php echo $event['id_event']; ?>" <?php echo ($event['name'] == $obit['name'] ? "selected" : ""); ?>><?php echo $event['name']; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
                             </span>
                         </td>
                         <td>
@@ -110,7 +115,7 @@
                             <input type="hidden" name="name"/>
                             <form id="form-update-<?php echo $obit['id_obit']; ?>" method="post" action="<?php echo ROOT; ?>/admin/obit/update.php" style="display: inline-block;">
                                 <input type="hidden" value="<?php echo $obit['id_obit']; ?>" name="id_obit"/>
-                                <input type="hidden" name="name"/>
+                                <input type="hidden" name="event"/>
                                 <input type="hidden" name="year"/>
                                 <input type="hidden" name="count"/>
                                 <button type='submit' value='SUBMIT' name='SUBMIT' class='btn btn-info btn-update edit <?php echo ($id_error == $obit['id_obit'] ? "" : "hidden") ?>'>Simpan</button>

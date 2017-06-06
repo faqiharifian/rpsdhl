@@ -83,10 +83,10 @@
                                     <span class="view <?php echo ($id_error == $item_kbr['id_kbr'] ? "hidden" : "") ?>"><?php echo $item_kbr['name']; ?></span>
                                     <span class="edit <?php echo ($id_error == $item_kbr['id_kbr'] ? "" : "hidden") ?>">
                                         <select class="form-control" name="city" required>
-                                            <option value="<?php echo $item_kbr['id_city']; ?>"><?php echo $item_kbr['name']; ?></option>
+                                            <option disabled selected>Pilih Kabupaten</option>
                                                 <?php
                                                 foreach ($data_cities as $item_cities){
-                                                    echo"<option value=".$item_cities['id_city'].">".$item_cities['name']."</option>";
+                                                    echo"<option value=".$item_cities['id_city']." ".($item_kbr['name'] == $item_cities['name']? "selected" : "").">".$item_cities['name']."</option>";
                                                 }
                                                 ?>
                                         </select>
